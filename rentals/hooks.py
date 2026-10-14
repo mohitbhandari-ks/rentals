@@ -123,9 +123,10 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	# "Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+    "Vehicle_Custom": "rentals.api.get_query_conditions_for_vehicle_custom"
+}
 #
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
@@ -171,6 +172,14 @@ app_license = "mit"
 # 		"rentals.tasks.monthly"
 # 	],
 # }
+
+scheduler_events = {
+    "Cron": {
+        "30 15 * * 3": [ 
+            "rentals.api.send_payemt_reminder" 
+            ]
+        }
+    }
 
 # Testing
 # -------
